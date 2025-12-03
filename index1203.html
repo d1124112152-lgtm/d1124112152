@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星座查詢</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    padding: 30px;
+    text-align: center;
+  }
+  .card {
+    background: white;
+    padding: 24px;
+    margin: auto;
+    max-width: 380px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  input {
+    margin-top: 12px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 10px;
+    background: #4f9cff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>星座查詢器</h2>
+    <p>輸入你的生日，我會告訴你是什麼星座！</p>
+    <input type="date" id="birthday">
+    <button onclick="checkZodiac()">查詢星座</button>
+    <div id="result"></div>
+  </div>
+<script>
+function checkZodiac() {
+  let input = document.getElementById("birthday").value;
+  if (!input) {
+    document.getElementById("result").innerText = "請先輸入生日！";
+    return;
+  }
+  let date = new Date(input);
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  let zodiac = "";
+  if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) zodiac = "水瓶座";
+  else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) zodiac = "雙魚座";
+  else if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) zodiac = "牡羊座";
+  else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) zodiac = "金牛座";
+  else if ((month == 5 && day >= 21) || (month == 6 && day <= 21)) zodiac = "雙子座";
+  else if ((month == 6 && day >= 22) || (month == 7 && day <= 22)) zodiac = "巨蟹座";
+  else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) zodiac = "獅子座";
+  else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) zodiac = "處女座";
+  else if ((month == 9 && day >= 23) || (month == 10 && day <= 23)) zodiac = "天秤座";
+  else if ((month == 10 && day >= 24) || (month == 11 && day <= 22)) zodiac = "天蠍座";
+  else if ((month == 11 && day >= 23) || (month == 12 && day <= 21)) zodiac = "射手座";
+  else zodiac = "摩羯座";
+  document.getElementById("result").innerText = "你的星座是： " + zodiac;
+}
+</script>
+</body>
+</html>
